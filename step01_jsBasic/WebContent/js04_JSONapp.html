@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>js04_JSONapp.html</title>
+</head>
+<body>
+	input tag에 입력하는 문자열을 json 객체로 변환해서 이름값만 body에 출력하기<br>
+	<!-- {"name" : "김혜수", "age" : 30} 
+		버튼 클릭시 input tag의 데이터값을 read해서 json 형태의 js 객체로 변환 후에,
+		div tage에 이름만 출력
+	-->
+	<input type="text" id = "data" value = '{"name" : "김혜수", "age" : 30}' size = "30%">
+	<button onclick = "myButton()">클릭</button>
+	<br><hr><br>
+	<div id = "one"></div>
+	
+	<script type="text/javascript">
+		function myButton() {
+			var obj = document.getElementById("data").value;
+		//	var obj2 = eval("(" + obj + ")");
+			var obj2 = JSON.parse(obj);
+			
+			document.getElementById("one").innerHTML = obj2.name +  obj2.age;
+		}
+	
+	</script>
+</body>
+</html>

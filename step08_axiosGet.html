@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div id="dataView"></div>
+
+    <script src="https://unpkg.com/axios@0.19.0/dist/axios.min.js"></script>
+    <script>
+        axios.get("http://jsonplaceholder.typicode.com/posts?userId=1")
+        .then(resData => {
+            console.log(resData.data[0].id);
+        })
+        .catch(error => {
+            console.log("비정상 응답", error);
+        });
+    
+    </script>
+</body>
+
+</html>

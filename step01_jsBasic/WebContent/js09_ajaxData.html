@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>js09_ajaxData.html</title>
+</head>
+<body>
+	<h3>web query를 서버에 비동기로 전송하는 기술 학습</h3>
+	<br><hr><br>
+	1. get 방식으로 서버에 데이터 전송<br>
+	2. post 방식으로 서버에 데이터 전송
+	- 이름, 나이값 ~> 서버에 전송 : jsp는 데이터 받아서 "안녕하세요 oo님, x살"으로 가공 후 응답<br>
+	
+	<script type="text/javascript">
+		// browser의 </body> tag 실행될 때 자동 실행되는 기능 => <body>가 다 실행되고 닫히면 실행된다! 따라서 ajaxJSON을 포함한 <body>에 포함된 모든 로직이 실행되고서야 window.onload가 실행된다.
+		// 특정 사이트에 접속 시 자동으로 팝업창이 뜨는 기술
+		window.onload = function() {
+			ajaxJSON();
+		}
+		
+		function ajaxJSON() {
+			var xhttp = new XMLHttpRequest();
+			xhttp.onreadystatechange = function() {	
+				
+		    	if (this.readyState == 4 && this.status == 200) {
+		    		alert(this.responseText);
+		    	}
+			};
+			// java script 상에서 서버에 데이터 전송시 한글 데이터 인코딩 처리
+			//encodeURIComponent() : 모든 브라우저 감안시 적용해야할 함수
+			var data = "name=김동성&age=10"; 
+			
+			// get 방식 요청인 경우
+		//	xhttp.open("GET", "js09_ajaxRes.jsp?" + data, true);
+		//	xhttp.send();
+		
+			// post 방식 요청인 경우
+			xhttp.open("POST", "js09_ajaxRes.jsp", true);
+			xhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+			xhttp.send(data);
+		}
+	
+	</script>
+</body>
+</html>

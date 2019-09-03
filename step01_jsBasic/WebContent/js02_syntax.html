@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>js02_syntax.html</title>
+</head>
+<body>
+	html 문서의 동적인 조작<br>
+	
+	<input type = "text" id = "one" value = "11"><br>
+	<input type = "text" id = "two" value = "22"><br>
+	
+	<button onclick = "myChange()">데이터 이동</button>
+	
+	<br><hr><br>
+	<div id = "dOne"></div>
+	<div id = "dTwo"></div>
+	 
+	<script type="text/javascript">
+		/*
+			1. 버튼 클릭 감지
+			2. id == 'one'인 tag를 검색
+			3. 입력된 데이터값 추출
+			4. id == 'two'인 tag 검색
+			5. two에 데이터 출력
+			6. one 영역은 입력된 데이터 clear
+		*/
+		
+		function myChange() {
+			alert(document.getElementById("two").value + ' 삭제!');
+
+			document.getElementById("two").value
+			= document.getElementById("one").value;
+			
+			// id가 one인 tag의 value값을 삭제하기 : '' or """
+			document.getElementById("one").value = "";
+			
+			// 매우 중요 - div tag에 특정 데이터 출력
+			// 1단계 - dOne에는 버튼 추가
+			// 2단계 - dTwo에는 text 데이터
+			document.getElementById("dOne").innerHTML = "<button>클릭</button>";
+			document.getElementById("dTwo").innerText = "<button>클릭</button>";
+		}
+		
+	</script>
+</body>
+</html>

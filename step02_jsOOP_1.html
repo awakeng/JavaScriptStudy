@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //  step01 - 객체 리터럴
+        var obj1 = {name: "신용기", age: 30};
+        console.log(obj1.name + obj1.age);
+
+        var obj2 = {};
+        obj2.name = "김혜경";
+        console.log(obj2.name);
+
+        // 
+        console.log(typeof(obj1));
+        console.log(typeof(obj2));
+
+        console.log(obj1);
+        console.log(obj1.hasOwnProperty())
+        console.log(obj1.valueOf());
+        // console.log(obj1.keys());
+        // class 기반
+        
+        // step02 - 생성자 함수
+        var obj3 = new Object();
+        obj3.id = "tester";
+        console.log(obj3);
+
+        // step03 - 사용자 정의 생성자 함수
+        function User(id) {
+            this.id = id;
+
+            this.setId = function(id) {
+                this.id = id;
+            }
+            this.getId = function() {
+                return this.id;
+            }
+        } 
+
+        // ? User객체 생성하셔서 id에 tester값을 저장 및 획득해서 콘솔창에 출력
+        // 인스턴스 생성 및 석성(변수), 메소드 ㅎ
+        var obj4 = new User('tester');
+        console.log(obj4.id);
+        console.log(obj4.getId());
+        obj4.setId('me');
+        console.log(obj4.getId());
+
+        obj4.address = '서초';
+        console.log(obj4.address);
+
+        // address 속성 관리해서 get/set 함수 구현 추가 가능 test 하기
+        obj4.setAddress = function(addr) {
+            this.address = addr;
+        }
+        obj4.getAddress = function() {
+            return this.address;
+        }
+        console.log(obj4.getAddress);
+        console.log(obj4.address);
+        obj4.setAddress('송파');
+
+        // for in
+        for(var data in obj4) {
+            console.log(data + " : " + obj4[data]);
+        }
+
+        //property 삭제 : address 삭제
+        delete obj4.address;
+        console.log(obj4.address);  
+
+    </script>
+
+</body>
+</html>

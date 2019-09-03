@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>js01_syntax.html</title>
+	<!-- js는 반드시 <script> tag 내부에 구현 -->
+	<script type="text/javascript">
+		// 한라인 주석
+		/*
+			블록라인 주석
+		*/
+		
+		var data = 10;	// 
+		//alert(data);
+		console.log(data);
+		console.log(typeof(data));
+		
+		data = 'String';
+		console.log(data);
+		console.log(typeof(data))
+		
+		// 로컬 변수 & 함수 구현 & 함수 호출
+		// 로컬 변수 선언 및 body 출력
+		function uf1() {
+			var lv = 'encore';
+			console.log('uf1()', lv);
+		}
+	//	uf1();
+		// parameter 함수 body 출력
+		function uf2(v1, v2) {
+			console.log('uf2()', v1 + v2);
+			console.log('uf2() 전역변수',  data)
+		}
+	/*	uf2();
+		uf2(1, 2);
+		uf2(1, 2, 3); */
+		
+		// return 함수
+		function uf3() {
+			return 'encore';
+		}
+	//	console.log(uf3());
+	</script>
+</head>
+<body>
+	<script type="text/javascript">
+	
+	</script>
+</body>
+</html>

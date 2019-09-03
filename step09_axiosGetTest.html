@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <button onclick="viewUser(1)">userId = 1</button>
+    <button onclick="viewUser(2)">userId = 2</button>
+    <button onclick="viewUser(3)">userId = 3</button>
+
+    <div id="dataView"></div>
+
+    <script src="https://unpkg.com/axios@0.19.0/dist/axios.min.js"></script>
+    <script>
+        viewUser = num => {
+            axios.get("https://jsonplaceholder.typicode.com/posts?userId=" + num)
+            .then(resData => {
+                let data = resData.data;
+                let v = "";
+                data.forEach(element => {
+                    v += '<p>id : ' + element.id + '<br>title' + element.title + '<br>body' + element.body + '</p>';
+                    // v += 'id : ' + element.id + '<br>';
+                });
+                document.getElementById("dataView").innerHTML = v;
+            })
+            .catch(error => {
+                console.log("비정상 응답", error);
+            });
+        };
+
+        // document.getElementById('two').onclick = function() {
+        //     axios.get("http://jsonplaceholder.typicode.com/posts?userId=2")
+        //     .then(resData => {
+        //     })
+        //     .catch()
+        // }
+    </script>
+
+</body>
+
+</html>
+
+<!-- document.getElementById('post').onclick -->

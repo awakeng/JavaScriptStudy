@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h3>template literal</h3>
+    ~[틸트], `[백틱]
+    1. 일반 따옴표로 문자열 표현할 경우 new line 반영 불가<br>
+    2. 백틱 기반의 새로운 template literal 사용시 + 결합 연산자 없이도 new line 반영 <br>
+    <script>
+        let data  = "data view1";
+        
+        let data2 = `"data"의 표기`;
+        
+        let data3  = `data
+        view1`;
+        
+        console.log(data2);
+        console.log(data3);
+        let data4= `에버랜드 ${data}`;
+        console.log(data4);
+        document.write(data4)
+
+        console.log(typeof(data2))
+        
+    </script>
+</body>
+</html>

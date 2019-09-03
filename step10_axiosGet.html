@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+
+</head>
+
+<body>
+    <div id="curve_chart" style="width: 900px; height: 500px"></div>
+
+    <button onclick="drawChartOne()">차트 그리기</button>
+
+    <script src="https://unpkg.com/axios@0.19.0/dist/axios.min.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        function drawChartOne() {
+            axios.get("http://localhost/step02_axiosResponse/axiosPost.jsp")
+            .then(function(resData) {
+
+                let result = [];
+                // console.log(resData.data);
+                let keys = Object.keys(resData.data[0]);                    // 받아온 데이터에서 key값들만 추출
+                // console.log(keys);
+                result.push(keys);                                          // key값들을 1번 째 값으로 array에 push
+                let values = [];
+
+                resData.data.forEach(element => {
+                    values = [];
+                    keys.forEach(key => {
+                    values.push(element[key]);                              // 3가지 value들 values에 저장
+                })
+                result.push(values);                                        // 각 row의 value들을 저장한 values를 하나하나씩 result에 push
+                });
+
+                console.log(result);                                        
+                drawChart(result);                                          // result를 parameter로 drawChart() 호출
+                }).catch(function(error) {
+                    console.log("비정상 응답", error);
+                });
+        }
+
+        google.charts.load('current', { 'packages': ['corechart'] });
+        // google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart(xx) {
+            console.log(2);
+            console.log(xx);
+            var data = google.visualization.arrayToDataTable(xx);
+            alert("ok");
+
+            var options = {
+                title: 'Company Performance',
+                curveType: 'function',
+                legend: { position: 'bottom' }
+            };
+
+            var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+
+            chart.draw(data, options);
+        }
+    </script>
+</body>
+
+</html>

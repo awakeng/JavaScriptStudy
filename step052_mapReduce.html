@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <script>
+        var arr = [
+            {"신용기" : "금"},
+            {"김진휘" : "금"},
+            {"김동성" : "목"},
+            {"김동범" : "금"}
+        ];
+        var arr2 = arr.reduce(function (pre, value) {
+            // console.log(pre)
+            console.log(value)
+            console.log(Object.keys(value)[0])
+            name = Object.keys(value)[0]
+            console.log(name)
+
+            console.log(value[name])
+            console.log(value.신용기)
+
+            pre.push(value[name]);
+            return pre;
+        }, [])
+        console.log(arr2);
+
+
+        // var arr3 = arr.map(function(x) {
+        //     console.log(x)
+        //     console.log(x.김동범)
+        //     return arr[x]
+        // })
+        // console.log(arr3)
+    </script>
+</body>
+</html>
+
+
+<!-- {김동성: "목"} -->

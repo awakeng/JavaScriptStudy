@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	JSON : Java Script Object Notation<br>
+	key, value 매핑 구조로 활용<br>
+	
+	<script type="text/javascript">
+		/*
+			사용자 정의 java script 객체
+			1. java script object
+			2. java script object 중 json
+		*/
+		var obj1 = {key1 : "v1"};
+		console.log(1 + " - " + obj1);
+		console.log(2 + " - " + obj1.key1);
+		
+		var obj2 = "{key1 : 'v1'}";
+		console.log(3 + " - " + obj2);
+		console.log(4 + " - " + obj2.key1);			// undefined
+		console.log(5 + " - " + typeof(obj2));		// string
+		
+		console.log(6 + " - " + typeof(obj1));		// object
+		
+		
+		/*
+			server에서 client로 전송하는 모든 데이터는 string 타입|
+			경우에 따라 key로 value를 구분해주는 json객체로 js에서 변환.
+		*/
+		var obj3 = eval("(" + obj2 + ")");
+		console.log(7 + " - " + obj3.key1);
+		
+	//	var obj4 = JSON.parse(obj2);
+	//	console.log(8 + " = " + obj4.key1);	// 단일 따옴표 표기로 인한 문법 오류
+		
+		var obj5 = '{"key1" : "v1"}';
+		var obj6 = eval("(" + obj5 + ")");	// json 형태로 변환시에만 적용 되는 () 표기
+		console.log(9 + " - " + obj6.key1); //v1
+		
+		var obj7 = JSON.parse(obj5);
+		console.log(10 + " - " + obj7.key1) //v1
+		
+		console.log("==== eval() : js 객체로 변환, js 코드로 변환");
+		document.write("body에 출력되는 데이터<br>");
+		'document.write("body에 출력되는 데이터 ----===<br>")';
+		eval('document.write("body에 출력되는 데이터 ------")');
+	</script>
+</body>
+</html>
